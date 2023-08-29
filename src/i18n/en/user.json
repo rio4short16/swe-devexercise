@@ -1,0 +1,10 @@
+{
+  "NOT_FOUND": {
+    "message": "User not found.",
+    "errorCode": "USER001"
+  },
+  "UPDATE_CREDENTIALS_ERROR": {
+    "message": "Old password is incorrect. Please try again!",
+    "errorCode": "USER002"
+  }
+}

@@ -1,0 +1,39 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {    
+  id                      String                      @id @default(cuid())                      @map("_id") 
+  email                   String                      @unique                     
+  password                String                                          
+
+  isActive                Boolean                     @default(true)                            @map("is_active")
+  dateCreated             DateTime                                                              @map("date_created")
+  lastUpdated             DateTime                    @default(now())                           @map("last_updated")
+
+  todos                   Todo[]
+
+  @@map("users")
+}
+
+model Todo {    
+  id                      String                      @id @default(cuid())                      @map("_id") 
+  userId                  String                                                                @map("user_id")
+  user                    User                        @relation(fields: [userId], references: [id])
+
+  task                    String   
+  priorityLevel           Int                                                                   @map("priority_level")                  
+
+  dateCreated             DateTime                                                              @map("date_created")
+  lastUpdated             DateTime                    @default(now())                           @map("last_updated")
+  @@map("todos")
+}
+
+
+
+
