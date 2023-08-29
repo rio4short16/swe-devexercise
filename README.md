@@ -26,6 +26,16 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+## Version Requirements
+
+- npm version: 9.5.1
+- node version: 18.16.1
+- package manager: npm
+
+## Postman API Documentation
+
+https://documenter.getpostman.com/view/24053361/2s9Y5Zv23M
+
 ## Installation
 
 ```bash
