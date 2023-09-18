@@ -31,6 +31,13 @@ export class TodoService {
     });
   }
 
+  async fetchTaskById(taskId: string): Promise<Todo> {
+    const todo = await this.findOneById(taskId);
+    if (!todo)
+      throw new NotFoundException(this.i18n.translate('todo.NOT_FOUND'));
+    return todo;
+  }
+
   async getAllTodosByUserId(userId: string): Promise<Todo[]> {
     return await this.prisma.todo.findMany({
       where: {

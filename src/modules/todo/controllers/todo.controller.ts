@@ -7,6 +7,7 @@ import {
   Controller,
   Delete,
   Get,
+  Param,
   Patch,
   Post,
   UseGuards,
@@ -36,6 +37,16 @@ export class TodoController {
     const todos = await this.todoService.getAllTodosByUserId(user?.id);
     return {
       data: TodoMapper.displayAll(todos),
+    };
+  }
+
+  @Get(':id')
+  async fetchSpecificTaskById(
+    @Param('id') id: string,
+  ): Promise<GenericResponseDto<TodoOutput>> {
+    const todo = await this.todoService.fetchTaskById(id);
+    return {
+      data: TodoMapper.displayOne(todo),
     };
   }
 
